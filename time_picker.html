@@ -2,58 +2,90 @@
 <html>
 <head>
 <style> 
+
 input.form-control {
     width: 100pt;
-    
+    display: inline;
 }
 </style>
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 <link rel="stylesheet" type="text/css" href="bootstrap-clockpicker.css">
 <script type="text/javascript" src="jquery.min.js"></script>
-
 <script type="text/javascript" src="bootstrap.min.js"></script>
-
 <script type="text/javascript" src="bootstrap-clockpicker.min.js"></script>
-
-
-
-
-
-
-
 <script type="text/javascript">
+
 $( document ).ready(function() {
-    console.log( "ready!" );
+    console.log( "DOM has loaded !" );
+    //Timepicker
     $(":input").clockpicker({
         placement: 'bottom',
         align: 'left',
         autoclose: true,
         'default': '13:14'
     });
-    
-
 });
+//To DO
+// Function that copies data to all input fields
+function copyToMonToFri(){
 
-
+}
 // Function that returns String of time
 function makeTimeString() {
+	//Final String that would 
 	var finalString = "";
-
+    
+    //Monday working time capture
     var timeMonOpen = (document.getElementById("monOpen").value.length == 0) ? "" :
-    "Mon: " + document.getElementById("monOpen").value + "-";
+    "Mo: " + document.getElementById("monOpen").value + "-";
     var timeMonClose = (document.getElementById("monClose").value.length == 0) ? "" :
     document.getElementById("monClose").value + ";";
+    
+    //Tuesday working time capture
+    var timeTueOpen = (document.getElementById("tueOpen").value.length == 0) ? "" :
+    "Tu: " + document.getElementById("tueOpen").value + "-";
+    var timeTueClose = (document.getElementById("tueClose").value.length == 0) ? "" :
+    document.getElementById("tueClose").value + ";";
 
+    //Wednsday working time capture
+    var timeWedOpen = (document.getElementById("wedOpen").value.length == 0) ? "" :
+    "We: " + document.getElementById("wedOpen").value + "-";
+    var timeWedClose = (document.getElementById("wedClose").value.length == 0) ? "" :
+    document.getElementById("wedClose").value + ";";
+    
+    //Thursday working time capture
+    var timeThuOpen = (document.getElementById("thuOpen").value.length == 0) ? "" :
+    "Th: " + document.getElementById("thuOpen").value + "-";
+    var timeThuClose = (document.getElementById("thuClose").value.length == 0) ? "" :
+    document.getElementById("thuClose").value + ";";
+    
+    //Friday working time capture
+    var timeFriOpen = (document.getElementById("friOpen").value.length == 0) ? "" :
+    "Fr: " + document.getElementById("friOpen").value + "-";
+    var timeFriClose = (document.getElementById("friClose").value.length == 0) ? "" :
+    document.getElementById("friClose").value + ";";
+    
+    //Saturday working time capture
+    var timeSatOpen = (document.getElementById("satOpen").value.length == 0) ? "" :
+    "Sa: " + document.getElementById("satOpen").value + "-";
+    var timeSatClose = (document.getElementById("satClose").value.length == 0) ? "" :
+    document.getElementById("satClose").value + ";";
 
+    //Sunday working time capture
+    var timeSunOpen = (document.getElementById("sunOpen").value.length == 0) ? "" :
+    "Su: " + document.getElementById("sunOpen").value + "-";
+    var timeSunClose = (document.getElementById("sunClose").value.length == 0) ? "" :
+    document.getElementById("sunClose").value + ";";
+    
+    finalString = 
+    timeMonOpen + timeMonClose +
+    timeTueOpen + timeTueClose +
+    timeWedOpen + timeWedClose +
+    timeThuOpen + timeThuClose +
+    timeFriOpen + timeFriClose +
+    timeSatOpen + timeSatClose +
+    timeSunOpen + timeSunClose
 
-
-    var timeTue = document.getElementById("tue").value;
-    var timeWed = document.getElementById("wed").value;
-    var timeThu = document.getElementById("thu").value;
-    var timeFri = document.getElementById("fri").value;
-    var timeSat = document.getElementById("sat").value;
-    var timeSun = document.getElementById("sun").value;
-    finalString = finalString+timeMonOpen+timeMonClose
     console.log(finalString)
     document.getElementById("test").innerHTML = finalString;
 }
@@ -70,26 +102,49 @@ From:
 <input class="form-control" id="monOpen" value="" placeholder="">
 To:
 <input class="form-control" id="monClose" value="" placeholder="">
-
+<button onclick="copyToNext()">TO DO: Copy to Tue</button>
+<button onclick="copyToNext()">To DO: Copy to Mo-Fr</button>
 
 <p>Tue:</p>
-<input class="form-control" id="tue" value="" placeholder="">
+From:
+<input class="form-control" id="tueOpen" value="" placeholder="">
+To:
+<input class="form-control" id="tueClose" value="" placeholder="">
+
 <p>Wed:</p>
-<input class="form-control" id="wed" value="" placeholder="">
+From:
+<input class="form-control" id="wedOpen" value="" placeholder="">
+To:
+<input class="form-control" id="wedClose" value="" placeholder="">
+
 <p>Thu:</p>
-<input class="form-control" id="thu" value="" placeholder="">
+From:
+<input class="form-control" id="thuOpen" value="" placeholder="">
+To:
+<input class="form-control" id="thuClose" value="" placeholder="">
+
 <p>Fri:</p>
-<input class="form-control" id="fri" value="" placeholder="">
+From:
+<input class="form-control" id="friOpen" value="" placeholder="">
+To:
+<input class="form-control" id="friClose" value="" placeholder="">
+
 <p>Sat:</p>
-<input class="form-control" id="sat" value="" placeholder="">
+From:
+<input class="form-control" id="satOpen" value="" placeholder="">
+To:
+<input class="form-control" id="satClose" value="" placeholder="">
+
 <p>Su:</p>
-<input class="form-control" id="sun" value="" placeholder="">
+From:
+<input class="form-control" id="sunOpen" value="" placeholder="">
+To:
+<input class="form-control" id="sunClose" value="" placeholder="">
+<p ></p>
 
 <button onclick="makeTimeString()">Get time String</button>
-<p id = "test">This is a test paragraph.</p>
-
-
-
+<p >Time converted to String:</p>
+<p id = "test">Result will appear here.</p>
 
 </body>
 </html>
