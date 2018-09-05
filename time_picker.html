@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style> 
+input.form-control {
+    width: 100pt;
+    
+}
+</style>
+<link rel="stylesheet" type="text/css" href="bootstrap.css">
+<link rel="stylesheet" type="text/css" href="bootstrap-clockpicker.css">
+<script type="text/javascript" src="jquery.min.js"></script>
+
+<script type="text/javascript" src="bootstrap.min.js"></script>
+
+<script type="text/javascript" src="bootstrap-clockpicker.min.js"></script>
+
+
+
+
+
+
+
+<script type="text/javascript">
+$( document ).ready(function() {
+    console.log( "ready!" );
+    $(":input").clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': '13:14'
+    });
+    
+
+});
+
+
+// Function that returns String of time
+function makeTimeString() {
+	var finalString = "";
+
+    var timeMonOpen = (document.getElementById("monOpen").value.length == 0) ? "" :
+    "Mon: " + document.getElementById("monOpen").value + "-";
+    var timeMonClose = (document.getElementById("monClose").value.length == 0) ? "" :
+    document.getElementById("monClose").value + ";";
+
+
+
+
+    var timeTue = document.getElementById("tue").value;
+    var timeWed = document.getElementById("wed").value;
+    var timeThu = document.getElementById("thu").value;
+    var timeFri = document.getElementById("fri").value;
+    var timeSat = document.getElementById("sat").value;
+    var timeSun = document.getElementById("sun").value;
+    finalString = finalString+timeMonOpen+timeMonClose
+    console.log(finalString)
+    document.getElementById("test").innerHTML = finalString;
+}
+</script>
+
+<title>Time Picker</title>
+</head>
+<body>
+
+<h1>Time Picker 0.1</h1>
+
+<p>Mon:</p>
+From:
+<input class="form-control" id="monOpen" value="" placeholder="">
+To:
+<input class="form-control" id="monClose" value="" placeholder="">
+
+
+<p>Tue:</p>
+<input class="form-control" id="tue" value="" placeholder="">
+<p>Wed:</p>
+<input class="form-control" id="wed" value="" placeholder="">
+<p>Thu:</p>
+<input class="form-control" id="thu" value="" placeholder="">
+<p>Fri:</p>
+<input class="form-control" id="fri" value="" placeholder="">
+<p>Sat:</p>
+<input class="form-control" id="sat" value="" placeholder="">
+<p>Su:</p>
+<input class="form-control" id="sun" value="" placeholder="">
+
+<button onclick="makeTimeString()">Get time String</button>
+<p id = "test">This is a test paragraph.</p>
+
+
+
+
+</body>
+</html>
